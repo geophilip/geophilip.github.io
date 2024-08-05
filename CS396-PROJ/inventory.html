@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Car Inventory</title>
+  <link rel="stylesheet" href="styles/inventory_styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+  <style>
+    .blur {
+      filter: blur(5px);
+    }
+    .navbar a.active {
+      background-color: #5BB5C2; /* Same color as navbar background */
+    }
+  </style>
+</head>
+<body class="font-arial">
+  <div class="navbar">
+    <a href="index.html">Home</a>
+    <a href="inventory.html" class="active">Car Inventory</a>
+    <a href="servicesched.html">Schedule Service</a>
+    <a href="contactus.html">Contact Us</a>
+    <a href="https://automobiles.honda.com/future-cars" target="_blank">Upcoming Models</a>
+  </div>
+  <div class="container">
+    <div class="search-options">
+      <p>I'm looking for...</p>
+      <button onclick="blurSection('new-vehicles')">New</button>
+      <button onclick="blurSection('used-vehicles')">Used</button>
+    </div>
+    <div id="new-vehicles" class="car-section">
+      <div class="section-title">New 2025 Honda Lineup</div>
+      <div class="car-card">
+        <img src="images/crv.jpg" alt="image_of_stock_2025_crv" class="enlargeable">
+        <h3>CR-V Crossover SUV</h3>
+        <p>$28,000 - $35,000</p>
+        <button>Explore</button>
+        <button>Build</button>
+      </div>
+    </div>
+    <div id="used-vehicles" class="car-section">
+      <div class="section-title">Used Vehicle Lineup</div>
+      <div class="car-card">
+        <img src="images/civic.jpg" alt="image_of_stock_2025_civic" class="enlargeable">
+        <h3>Civic Sedan</h3>
+        <p>$20,000 - $28,000</p>
+        <button>Explore</button>
+        <button>Trims</button>
+      </div>
+    </div>
+  </div>
+  <!-- Lightbox container -->
+  <div id="lightbox" class="lightbox">
+    <img src="" alt="Enlarged Image">
+  </div>
+  <div class="font-selector">
+    <label for="font-select">Choose Font:</label>
+    <select id="font-select">
+      <option value="font-arial">Arial</option>
+      <option value="font-verdana">Verdana</option>
+      <option value="font-georgia">Georgia</option>
+      <option value="font-times">Times New Roman</option>
+    </select>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <script src="javascript/js_inventory.js"></script>
+  <script>
+    // Anime.js animations
+
+    // Animate images on page load
+    anime({
+      targets: '.car-card img',
+      translateY: [100, 0],
+      opacity: [0, 1],
+      easing: 'easeOutExpo',
+      duration: 1000,
+      delay: anime.stagger(200)
+    });
+
+    // Animate buttons on hover
+    document.querySelectorAll('.car-card button').forEach(button => {
+      button.addEventListener('mouseenter', () => {
+        anime({
+          targets: button,
+          scale: 1.1,
+          easing: 'easeOutExpo',
+          duration: 300
+        });
+      });
+      button.addEventListener('mouseleave', () => {
+        anime({
+          targets: button,
+          scale: 1,
+          easing: 'easeOutExpo',
+          duration: 300
+        });
+      });
+    });
+
+    // Blur effect
+    function blurSection(sectionId) {
+      const sections = document.querySelectorAll('.car-section');
+      sections.forEach(section => {
+        if (section.id !== sectionId) {
+          anime({
+            targets: section,
+            filter: 'blur(5px)',
+            easing: 'easeOutExpo',
+            duration: 300
+          });
+        } else {
+          anime({
+            targets: section,
+            filter: 'blur(0)',
+            easing: 'easeOutExpo',
+            duration: 300
+          });
+        }
+      });
+
+      // Remove blur on scroll
+      window.addEventListener('scroll', () => {
+        sections.forEach(section => {
+          anime({
+            targets: section,
+            filter: 'blur(0)',
+            easing: 'easeOutExpo',
+            duration: 300
+          });
+        });
+      }, { once: true });
+    }
+
+    // Pulsating color animation for active navbar button
+    function startPulsate(target) {
+      anime({
+        targets: target,
+        backgroundColor: [
+          { value: '#398cd7', duration: 2000 },
+          { value: '#5BB5C2', duration: 2000 }
+        ],
+        easing: 'easeInOutQuad',
+        direction: 'alternate',
+        loop: true
+      });
+    }
+
+    // Apply pulsating animation to the active navbar button
+    document.querySelectorAll('.navbar a').forEach(link => {
+      if (link.classList.contains('active')) {
+        startPulsate(link);
+      }
+    });
+  </script>
+</body>
+</html>
