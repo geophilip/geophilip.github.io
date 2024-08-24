@@ -114,3 +114,34 @@
         width: 90%;
       }
     }
+     .navbar a {
+      margin-right: 15px;
+    }
+    .title, .section-title {
+      text-align: center;
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+    .team-section {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+    }
+    .team-member {
+      text-align: center;
+      opacity: 0; /* Start with images hidden */
+      transition: transform 0.3s, opacity 0.3s;
+    }
+    .team-member img {
+      border-radius: 50%;
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      transition: transform 0.3s;
+    }
+    .team-member:hover {
+      transform: scale(1.05);
+    }
+    .team-member:hover img {
+      transform: scale(1.1);
+    }
