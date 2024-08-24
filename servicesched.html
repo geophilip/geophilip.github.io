@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Honda Service Scheduler</title>
+  <link rel="stylesheet" href="styles/service_sched_styles.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+
+  
+</head>
+<body>
+  <div class="container">
+    <div class="navbar"> 
+      <a href="index.html">Home</a>
+      <a href="inventory.html">Car Inventory</a>
+      <a href="servicesched.html" class="active">Schedule Service</a>
+      <a href="contactus.html">Contact Us</a>
+      <a href="https://automobiles.honda.com/future-cars" target="_blank">Upcoming Models</a>
+    </div>
+
+    <div class="title">Honda Service Scheduler</div>
+
+    <div class="car-navbar">
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle wiggle" type="button" id="yearDropdownButton" data-bs-toggle="dropdown" aria-expanded="false">
+          Year
+        </button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#" onclick="updateDropdown('yearDropdownButton', this)">2024</a></li>
+          <li><a class="dropdown-item" href="#" onclick="updateDropdown('yearDropdownButton', this)">2023</a></li>
+          <li><a class="dropdown-item" href="#" onclick="updateDropdown('yearDropdownButton', this)">2022</a></li>
+          <li><a class="dropdown-item" href="#" onclick="updateDropdown('yearDropdownButton', this)">2021</a></li>
+        </ul>
+      </div>
+
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle wiggle" type="button" id="modelDropdownButton" data-bs-toggle="dropdown" aria-expanded="false">
+          Model
+        </button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#" onclick="updateDropdown('modelDropdownButton', this)">Civic</a></li>
+          <li><a class="dropdown-item" href="#" onclick="updateDropdown('modelDropdownButton', this)">Accord</a></li>
+          <li><a class="dropdown-item" href="#" onclick="updateDropdown('modelDropdownButton', this)">CR-V</a></li>
+          <li><a class="dropdown-item" href="#" onclick="updateDropdown('modelDropdownButton', this)">Pilot</a></li>
+        </ul>
+      </div>
+
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle wiggle" type="button" id="trimDropdownButton" data-bs-toggle="dropdown" aria-expanded="false">
+          Trim Level
+        </button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#" onclick="updateDropdown('trimDropdownButton', this)">LX</a></li>
+          <li><a class="dropdown-item" href="#" onclick="updateDropdown('trimDropdownButton', this)">EX</a></li>
+          <li><a class="dropdown-item" href="#" onclick="updateDropdown('trimDropdownButton', this)">EX-L</a></li>
+          <li><a class="dropdown-item" href="#" onclick="updateDropdown('trimDropdownButton', this)">Touring</a></li>
+        </ul>
+      </div>
+
+      <a href="#" class="btn btn-primary" id="goButton">GO</a>
+    </div>
+
+    <div class="appointment-type">
+      <p>Is this appointment for routine maintenance or major repairs?</p>
+    </div>
+
+    <div class="appointment-options">
+      <div class="maintenance">
+        <button>Oil & Filter Change</button>
+        <button>Tire Rotation</button>
+        <button>ATF Fluid Change</button>
+      </div>
+      <div class="repair">
+        <button>Repair</button>
+        <label for="repair-description">Please describe your repair needs:</label>
+        <textarea id="repair-description" placeholder="Describe your repair needs here"></textarea>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="javascript/service_sched_js.js"> 
+    </script>
+</body>
+</html>
